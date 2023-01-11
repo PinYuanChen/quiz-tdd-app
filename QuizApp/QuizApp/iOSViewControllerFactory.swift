@@ -14,10 +14,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
     }
     
     func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
+        
+        guard let options = self.options[question] else {
+            fatalError("Couldn't find options for queston: \(question)")
+        }
+        
         switch question {
         case .singleAnswer(let value):
-            let vc = QuestionViewController(question: value, options: options[question]!, selection: answerCallback)
-            return vc
+            return QuestionViewController(question: value, options: options, selection: answerCallback)
         default:
             return .init()
         }
