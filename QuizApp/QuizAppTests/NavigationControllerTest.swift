@@ -40,12 +40,19 @@ class NavigationControllerRouterTest: XCTestCase {
     func test_routeToResult_showsResultController() {
         let viewController = UIViewController()
         let result = Result.make(answers: [Question.singleAnswer("Q1"): "A1"], score: 10)
+        
+        let secondViewController = UIViewController()
+        let secondResult = Result.make(answers: [Question.singleAnswer("Q2"): "A2"], score: 20)
+        
         factory.stub(result: result, with: viewController)
+        factory.stub(result: secondResult, with: secondViewController)
         
         sut.routeTo(result: result)
+        sut.routeTo(result: secondResult)
         
-        XCTAssertEqual(navigationController.viewControllers.count, 1)
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
         XCTAssertEqual(navigationController.viewControllers.first, viewController)
+        XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
     }
     
     class NonAnimatedNavigationController: UINavigationController {
