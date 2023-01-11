@@ -20,7 +20,6 @@
 		CD4061B229690B3C00AB9088 /* QuizAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4061B129690B3C00AB9088 /* QuizAppUITestsLaunchTests.swift */; };
 		CD4061C029690D5800AB9088 /* QuestionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4061BF29690D5800AB9088 /* QuestionViewControllerTest.swift */; };
 		CD4061C229690E0500AB9088 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4061C129690E0500AB9088 /* QuestionViewController.swift */; };
-		CD4061C329690E0500AB9088 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4061C129690E0500AB9088 /* QuestionViewController.swift */; };
 		CD4061C529690E9300AB9088 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4061C429690E9300AB9088 /* QuestionViewController.xib */; };
 		CD4061C629690E9300AB9088 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4061C429690E9300AB9088 /* QuestionViewController.xib */; };
 		CD8F192F296D4C1B00AF6E72 /* QuestionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8F192E296D4C1B00AF6E72 /* QuestionTest.swift */; };
@@ -368,7 +367,6 @@
 				CD92F562296BDF8B00A3CE49 /* ResultViewControllerTest.swift in Sources */,
 				CD8F192F296D4C1B00AF6E72 /* QuestionTest.swift in Sources */,
 				CDEB16A1296E89A700D730F3 /* iOSViewControllerFactoryTest.swift in Sources */,
-				CD4061C329690E0500AB9088 /* QuestionViewController.swift in Sources */,
 				CDC5BF6B296D3ECA000FC0DD /* NavigationControllerTest.swift in Sources */,
 				CD4061C029690D5800AB9088 /* QuestionViewControllerTest.swift in Sources */,
 				CD92F568296BE7F300A3CE49 /* TableViewHelpers.swift in Sources */,

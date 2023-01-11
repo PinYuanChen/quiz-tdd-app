@@ -13,11 +13,17 @@ class iOSViewControllerFactory: ViewControllerFactory {
         self.options = options
     }
     
-    func questionViewController(for question: Question<String>, answerCallback: @escaping (String) -> Void) -> UIViewController {
-        return QuestionViewController(question: "", options: options[question]!) { _ in }
+    func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
+        switch question {
+        case .singleAnswer(let value):
+            let vc = QuestionViewController(question: value, options: options[question]!, selection: answerCallback)
+            return vc
+        default:
+            return .init()
+        }
     }
     
-    func resultViewController(for result: Result<Question<String>, String>) -> UIViewController {
+    func resultViewController(for result: Result<Question<String>, [String]>) -> UIViewController {
         return .init()
     }
 }

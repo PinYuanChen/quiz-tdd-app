@@ -90,7 +90,7 @@ final class QuestionViewControllerTest: XCTestCase {
     
     // MARK: Helpers
     func makeSUT(question: String = "",
-                 options: [String],
+                 options: [String] = [],
                  selection: @escaping ([String]) -> Void = { _ in}) -> QuestionViewController {
         let sut = QuestionViewController(question: question, options: options, selection: selection)
 
