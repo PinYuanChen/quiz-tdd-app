@@ -72,6 +72,10 @@ class NavigationControllerRouterTest: XCTestCase {
             self.answerCallback[question] = answerCallback
             return stubbedQuestions[question] ?? .init()
         }
+        
+        func resultViewController(for result: Result<Question<String>, String>) -> UIViewController {
+            return stubbedResults[result] ?? .init()
+        }
     }
 }
 
