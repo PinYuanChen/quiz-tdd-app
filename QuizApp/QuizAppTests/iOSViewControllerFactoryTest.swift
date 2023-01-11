@@ -8,11 +8,10 @@ import XCTest
 
 class iOSViewControllerFactoryTest: XCTestCase {
     
-    let question = Question.singleAnswer("Q1")
     let options = ["A1", "A2"]
     
     func test_questionViewController_createsControllerWithQuestion() {
-        XCTAssertEqual(makeQuestionController().question, "Q1")
+        XCTAssertEqual(makeQuestionController(question: "Q1").question, "Q1")
     }
     
     func test_questionViewController_createsControllerWithOptions() {
@@ -27,11 +26,12 @@ class iOSViewControllerFactoryTest: XCTestCase {
     }
     
     // MARK: Helpers
-    func makeSUT() -> iOSViewControllerFactory {
-        return iOSViewControllerFactory(options: [question: options])
+    func makeSUT(options: Dictionary<Question<String>, [String]>) -> iOSViewControllerFactory {
+        return iOSViewControllerFactory(options: options)
     }
     
-    func makeQuestionController() -> QuestionViewController {
-        return makeSUT().questionViewController(for: question) { _ in } as! QuestionViewController
+    func makeQuestionController(question: String = "") -> QuestionViewController {
+        let q = Question.singleAnswer(question)
+        return makeSUT(options: [q: options]).questionViewController(for: q) { _ in } as! QuestionViewController
     }
 }
