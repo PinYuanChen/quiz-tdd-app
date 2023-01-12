@@ -14,12 +14,32 @@ struct ResultPresenter {
     }
     
     var presentableAnswers: [PresentableAnswer] {
-        return result.answers.map { (question, userAnswers) in
-            switch question {
-            case .singleAnswer(let value),
-                    .multipleAnswer(let value):
-                return PresentableAnswer(question: value, answer: correctAnswers[question]!.joined(separator: ", "), wrongAnswer: userAnswers.joined(separator: ", "))
+        return result.answers.map { (question, userAnswer) in
+            
+            guard let correctAnswer = correctAnswers[question] else {
+                fatalError("Couldn't find correct answer for question: \(question)")
             }
+            
+            return presentableAnswers(question, userAnswer, correctAnswer)
         }
+    }
+    
+    private func presentableAnswers(_ question: Question<String>, _ userAnswer: [String], _ correctAnswer: [String]) -> PresentableAnswer {
+        switch question {
+        case .singleAnswer(let value),
+                .multipleAnswer(let value):
+            return PresentableAnswer(
+                question: value,
+                answer: formattedAnswer(correctAnswer),
+                wrongAnswer: formattedWrongAnswer(userAnswer, correctAnswer))
+        }
+    }
+    
+    private func formattedAnswer(_ answer: [String]) -> String {
+        return answer.joined(separator: ", ")
+    }
+    
+    private func formattedWrongAnswer(_ userAnswer: [String], _ correctAnswer: [String]) -> String? {
+        return correctAnswer == userAnswer ? nil : formattedAnswer(userAnswer)
     }
 }
