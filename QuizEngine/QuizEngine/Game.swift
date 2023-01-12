@@ -12,8 +12,14 @@ public class Game <Question: Hashable, Answer, R: Router> where R.Question == Qu
     }
 }
 
-public func startGame<Question: Hashable, Answer: Equatable, R: Router>(questions: [Question], router: R, correctAnswers: [Question: Answer]) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer {
-    let flow = Flow(questions: questions, router: router, scoring: { scoring($0, correctAnswers: correctAnswers) })
+public func startGame<Question: Hashable, Answer: Equatable, R: Router>(
+    questions: [Question],
+    router: R,
+    correctAnswers: [Question: Answer]
+) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer {
+    let flow = Flow(questions: questions,
+                    router: router,
+                    scoring: { scoring($0, correctAnswers: correctAnswers) })
     flow.start()
     return Game(flow: flow)
 }
